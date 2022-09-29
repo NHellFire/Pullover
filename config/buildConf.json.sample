@@ -1,6 +1,6 @@
 {
 	"nwbuild": {
-		"version": "0.12.1",
+		"version": "0.61.0",
 		"platforms": ["osx64", "win32", "linux32", "linux64"],
 	    "files": "./dist/**/**",
 	    "buildDir": "./bin",
