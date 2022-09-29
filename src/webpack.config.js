@@ -1,7 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var WebpackNotifierPlugin = require('webpack-notifier')
 
 module.exports = {
@@ -21,13 +21,12 @@ module.exports = {
     pathinfo: true
   },
   plugins: [
-    new webpack.IgnorePlugin(/^electron|bufferutil|utf\-8\-validate$/),
+    new webpack.IgnorePlugin({ resourceRegExp: /^electron|bufferutil|utf\-8\-validate$/ }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({name: ['react','vendors']}),
     new HtmlWebpackPlugin({
       title: 'Pullover'
     }),
-    new ExtractTextPlugin('styles.css'),
+    new MiniCssExtractPlugin({ filename: 'styles.css' }),
     new WebpackNotifierPlugin()
   ],
   resolve: {
@@ -49,12 +48,6 @@ module.exports = {
       {test: /\.eot$/, use: 'file-loader?name=./fonts/[name].[ext]'},
       {test: /\.svg$/, use: 'file-loader?name=./fonts/[name].[ext]'},
 
-      // JSON
-      {
-        test: /\.json/,
-        loader: 'json-loader'
-      },
-
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -71,11 +64,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?sourceMap!' +
-          'sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true'
-        }),
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader?sourceMap!',
+          { loader: 'sass-loader', options: { sourceMap: true, sassOptions: { outputStyle: 'expanded' } } }
+        ],
         include: path.join(__dirname, 'app')
       }
     ],

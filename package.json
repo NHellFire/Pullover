@@ -10,16 +10,16 @@
   "license": "GPL-3.0",
   "dependencies": {
     "appdmg": "^0.5.2",
-    "archiver": "^2.1.1",
-    "async": "^2.0.1",
-    "commander": "^2.5.0",
+    "archiver": "^5.3.0",
+    "async": "^3.2.3",
+    "commander": "^9.0.0",
     "commander-tabtab": "^0.1.0",
-    "del": "^3.0.0",
+    "del": "^6.0.0",
     "eyes": "^0.1.8",
     "fs.extra": "^1.2.1",
-    "nw-builder": "^3.0.0",
+    "nw-builder": "^3.5.7",
     "promise": "^8.0.1",
-    "ssh2": "^0.5.0",
+    "ssh2": "^1.6.0",
     "swig": "^1.4.2"
   }
 }
