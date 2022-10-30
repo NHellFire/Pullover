@@ -5,7 +5,7 @@ import './services/Logging'
 import Window, { quitApp, showWindow } from './nw/Window'
 import './nw/Tray'
 // Include package.json for NW.js, also add global styles
-import '!!file-loader?name=package.json!../package.json'
+import '../package.json'
 import './styles/styles.scss'
 // React, Redux, ReduxRouter and routes
 import React from 'react'
